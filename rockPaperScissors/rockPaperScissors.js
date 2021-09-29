@@ -18,8 +18,21 @@
 *
 */
 
-var rockPaperScissors = function (
-) {
-  // TODO: your solution here
+var rockPaperScissors = function(rounds) {
+  var options = ['R', 'P', 'S'];
+  // debugger;
+  var result = [];
+  var table = Array(rounds).fill('R');
+
+  for (var i = 0; i < rounds.length; i++) {
+    for (var k of options) {
+      table.unshift(k);
+      table.pop();
+      console.log(table.join())
+    }
+  }
+
+  return result;
 };
 
+console.log(rockPaperScissors(3))
