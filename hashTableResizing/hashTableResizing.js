@@ -21,7 +21,7 @@ var getIndexBelowMaxForKey = function(str, max) {
 };
 
 
-class MakeHashTable {
+class makeHashTable {
   constructor() {
     this.result = {};
     this.storage = [];
