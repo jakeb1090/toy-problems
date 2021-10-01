@@ -20,26 +20,90 @@ var getIndexBelowMaxForKey = function(str, max) {
   return hash % max;
 };
 
-var makeHashTable = function() {
-  var result = {};
-  var storage = [];
-  var storageLimit = 4;
-  var size = 0;
-  
-  result.insert = function(/*...*/ 
-) {
+
+class MakeHashTable {
+  constructor() {
+    this.result = {};
+    this.storage = [];
+    this.storageLimit = 4;
+    this.size = 0;
+  }
+
+  insert(key, value) {
     // TODO: implement `insert`
+    //if bucket exists
+      // if key exists
+        // replace value
+      // if no key
+        // push tuple into bucket
+
+    var hashIndex = getIndexBelowMaxForKey(key, this.storageLimit)
+    var bucket = [];
+
+
+    if (typeof this.storage[hashIndex] !== typeof bucket) {
+      for (var tuple in this.storage[hashIndex]) {
+        if (tuple[0] === key) {
+          tuple[1] = value;
+        } else {
+        var bucket = this.storage[hashIndex];
+        bucket.push([key, value]);
+        }
+      }
+    }
+
+    if (!Array.isArray(this.result[hashIndex])) {
+      this.storage[hashIndex] = bucket;
+      bucket.push([key, value]);
+    }
+
+    this.size ++;
+    this.resize();
   };
 
-  result.retrieve = function(/*...*/ 
-) {
+  retrieve(key) {
     // TODO: implement `retrieve`
+    var hashIndex = getIndexBelowMaxForKey(key, this.storageLimit);
+    var bucket = this.storage[hashIndex]
+    for (var tuple in bucket) {
+      if (tuple[0] === key) {
+        return tuple
+      }
+    }
   };
 
-  result.remove = function(/*...*/ 
-) {
+  remove(key) {
     // TODO: implement `remove`
+    var tuple = this.retrieve(key)
+    var temp = tuple
+    tuple = [];
+
+    this.size --;
+    this.resize()
+    return temp;
   };
 
-  return result;
+  resize() {
+    var ratio = this.size / this.storage.length;
+    if (ratio.toFixed(2) > .75) {
+      this.size = this.size * 2;
+    }
+    if (ratio.toFixed(2) < .25) {
+      this.size = this.size / 2;
+    }
+  }
+
 };
+
+
+// var table = new MakeHashTable();
+
+// table.insert('person', 'jake');
+// table.insert('person', 'john');
+// table.insert('person', 'joe');
+// table.insert('person', 'will');
+// table.insert('person', 'dude');
+// table.remove('person')
+
+
+// console.log(table)
