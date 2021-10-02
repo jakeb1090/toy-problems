@@ -52,11 +52,10 @@
       // console.log('min', Math.min(this.storage))
       return this.storage[this.storage.length - 1];      // return this.storage;
     };
-
   };
 
 
-module.exports = Stack;
+// module.exports = Stack;
 
 // var example = new Stack()
 
