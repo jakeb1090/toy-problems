@@ -32,7 +32,39 @@
 
 // Feel free to add helper functions if needed.
 
+// if the first element is greater than the second element, it swaps the two.
+// It then compares the second to the third, and the third to the fourth,
 
-var bubbleSort = function(array) {
-  // Your code here.
-};
+// iterate through the array;
+// if FIRST is greater than SECOND
+  // i = i + 1
+  // i + 2 = i
+// if SECOND is greater than FIRST
+  // continue
+
+  var bubbleSort = function(array) {
+    // Your code here.
+
+    //loop through array, switching places in needed;
+    // if places switched, set isSorted to false;
+    var isSorted;
+
+    if (isSorted === true) {
+      return array;
+    }
+
+    for (var i = 0; i < array.length - 1; i ++ ) {
+      isSorted = true;
+      if (array[i] > array[i + 1]) {
+        var tempNum = array[i];
+        array[i] = array[i + 1];
+        array[i + 1] = tempNum;
+        bubbleSort(array);
+        isSorted = false;
+      }
+    }
+    return array;
+  }
+
+  // console.log(bubbleSort([1, 2, 43, 100, 100, 21, 21]));
+  // console.log(bubbleSort([24.7, 24.3, 23, 9, 3, 3, 100, 25, 100]));
