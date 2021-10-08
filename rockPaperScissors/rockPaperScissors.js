@@ -36,3 +36,7 @@ var rockPaperScissors = function(rounds) {
 };
 
 console.log(rockPaperScissors(3))
+
+
+
+//Time Complexity = LINEAR;

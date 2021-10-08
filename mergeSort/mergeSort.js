@@ -99,4 +99,52 @@
 
 var mergeSort = function(array) {
   // Your code here.
+  // slice in half
+  // mergeSort halves until base case .. <= 0
+  // merge helper on each new array
+  if (array.length <= 1) {
+    return array;
+  }
+
+  var mergeHelper = function(arrayLeft, arrayRight) {
+    var result = [];
+    var indexLeft = 0;
+    var indexRight = 0;
+
+    while(indexLeft < arrayLeft.length && indexRight < arrayRight.length) {
+      if (arrayLeft[indexLeft] < arrayRight[indexRight]) {
+        result.push(arrayLeft[indexLeft]);
+        indexLeft ++;
+      } else {
+        // if (arrayRight[indexRight] < arrayLeft[indexLeft]) {
+          result.push(arrayRight[indexRight]);
+          indexRight ++;
+        }
+      }
+    while(indexLeft < arrayLeft.length) {
+      result.push(arrayLeft[indexLeft]);
+      indexLeft ++;
+    }
+    while(indexRight < arrayRight.length) {
+      result.push(arrayRight[indexRight]);
+      indexRight ++;
+    }
+
+    return result;
+  }
+
+  var midPoint = Math.round(array.length / 2);
+  var arr1 = mergeSort(array.slice(0, midPoint)); // return half
+  var arr2 = mergeSort(array.slice(midPoint)); // return half
+  return [...mergeHelper(arr1, arr2)]; // merge halves
 };
+
+
+
+
+
+
+
+// console.log(mergeHelper([2, 5, 9, 3], [7, 3, 8, 3, 6, 8, 9]));
+// console.log(mergeSort([6, 7, 2, 9, 6, 2, 14, 99, 100]));
+console.log(mergeSort([24.7, 24.3, 23, 9, 3, 3, 100, 25, 100]));

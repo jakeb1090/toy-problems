@@ -35,18 +35,29 @@
 
 // This function is to help you test, and should not be incorporated in your solution.
 // It will transform an array of numbers into an array of valid objects.
-var testingTransform = function(array) {
+var testingTransform = function (array) {
   var transform = [];
-  
+
   for (var i = 0; i < array.length; i++) {
-    transform.push({value: array[i], i: i});
+    transform.push({ value: array[i], i: i });
   }
 
   return transform;
 };
 
-var insertionSort = function(array
-) {
+var insertionSort = function (array) {
   // Your code goes here. Feel free to add helper functions if needed.
+  for (var i = 1; i < array.length; i ++ ) {
+    for (var k = array.length - 1; k = 0; k--) {
+      if (k < i) {
+        
+      }
+    }
+  }
+
+
   return array;
 };
+
+// console.log(insertionSort([1, 2, 43, 100, 100, 21, 21]));
+// console.log(insertionSort([24.7, 24.3, 23, 9, 3, 3, 100, 25, 100]));

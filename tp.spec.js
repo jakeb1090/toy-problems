@@ -55,7 +55,18 @@ describe("constantTimeStackMin", () => {
   it('should return a stack', () => {
     expect(new Stack()).toBe(typeof Array);
   });
-  it('should last item of the stack', () => {
-    expect(stack.pop()).to.be(3);
+  it('stack size should reflect length of stack', () => {
+    expect(stack.size()).should.be(2);
   });
 });
+
+describe("bubbleSort", function() {
+  it('should return a sorted array', function() {
+    expect(bubbleSort([1, 2, 3])).to.be([1, 2, 3])
+  });
+
+  it('should return an empty array if passed as arg', function() {
+    expect(bubbleSort([])).to.equal([]);
+  })
+
+})
