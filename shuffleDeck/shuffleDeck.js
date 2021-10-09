@@ -41,12 +41,45 @@ var orderedDeck = function() {
   var suits = [ '♥', '♣', '♠', '♦' ];
   var values = [ 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K' ];
   var deck = [];
+  var tracker = {};
+  var shuffled = [];
 
-  suits.forEach(function(suit) {
-    values.forEach(function(value) {
-      deck.push(value + suit);
-    });
-  });
+  var randomIndex = (array) => {
+    var max = array.length;
+    var min  = 0;
+    return Math.floor(Math.random() * (max - min) + min);
+  }
 
-  return deck;
+  for (suit of suits) {
+    for (val of values) {
+      tracker[`${val}${suit}`] = 0
+    }
+  }
+
+  while([...new Set(deck)].length < 52) {
+    for (var i = 0; i < suits.length; i ++ ) {
+      for (var k = 0; k < values.length; k ++ ) {
+        var randIndex = randomIndex(values);
+        var currentCard = `${suits[i]}${values[k]}`
+        deck.push(currentCard);
+      }
+    }
+  }
+
+  while(deck.length > 1) {
+    randIndex = randomIndex(deck);
+    var currentCard = deck[randIndex];
+    shuffled.push(currentCard);
+    deck.splice(randIndex, 1);
+  }
+
+
+
+
+
+  return shuffled
 };
+
+
+
+console.log(orderedDeck())
