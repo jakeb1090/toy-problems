@@ -31,9 +31,9 @@
  *   See https://www.dartmouth.edu/~chance/teaching_aids/books_articles/Mann.pdf .
  */
 
-var shuffleDeck = function(deck) {
-  // Your code here
-};
+// var shuffleDeck = function(deck) {
+//   // Your code here
+// };
 
 // Ordered deck generator provided for your testing convenience
 // (You may alter this function, but an unaltered copy will be used for tests.)
@@ -73,11 +73,10 @@ var orderedDeck = function() {
     deck.splice(randIndex, 1);
   }
 
+  return shuffled.reduce((acc, card)) => {
 
+  })
 
-
-
-  return shuffled
 };
 
 
